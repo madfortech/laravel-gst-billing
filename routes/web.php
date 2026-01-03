@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendorInvoice;
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,8 @@ use App\Http\Controllers\VendorInvoice;
 });*/
 
 # Index Page
-Route::get('/', "AppController@index")->name('dashboard');
+Route::get('/', [AppController::class, 'index'])->name('dashboard');
+
 
 // Party routes
 Route::get('/add-party', "PartyController@addParty")->name('add-party');
@@ -48,4 +51,4 @@ Route::post('/change-password', "UserController@changePasswordSubmit")->name('ch
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
