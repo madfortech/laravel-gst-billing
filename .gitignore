@@ -1,33 +1,41 @@
-# Keys / secrets
+# -------------------------
+# Secrets & environment
+# -------------------------
+.env
+.env.*
 *.pem
 *.key
-.env
-node_modules/
-vendor/
-storage/logs/*.log
+
+# -------------------------
+# Dependencies
+# -------------------------
+/node_modules/
+/vendor/
+
+# -------------------------
+# Logs & databases
+# -------------------------
+/storage/logs/*.log
 *.log
 *.sql
 *.sqlite
+
+# -------------------------
+# User uploads & cache
+# -------------------------
+/public/uploads/*
+/storage/app/public/*
+/bootstrap/cache/*.php
+
+# -------------------------
+# Local only files
+# -------------------------
 .env.local
-.env.*.local
-public/uploads/*
-storage/app/public/*
-bootstrap/cache/*.php
-composer.lock
-.env.example
-.env.backup
-.env.local
-.env.*.local
 .env.production
 .env.staging
 .env.development
 .env.testing
 .env.ci
 .env.dev
-.env.local.dev
-.env.local.staging
-.env.local.production
-.env.local.dev.sqlite
-.env.local.staging.sqlite
-.env.local.production.sqlite
-.env.local.dev.backup
+.env.backup
+package-lock.json
