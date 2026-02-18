@@ -1,116 +1,81 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-<!-- Start Content-->
-<div class="container-fluid">
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <h4 class="page-title font-weight-bold">DASHBORAD</h4>
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
 
-    <div class="row">
-        <div class="col-md-6 col-xl-3">
-            <div class="widget-rounded-circle card-box">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
-                            <i class="fe-users font-22 avatar-title text-primary"></i>
-                        </div>
+<div class="flex min-h-screen bg-gray-50">
+
+    <!-- Sidebar -->
+    <aside class="w-64 shrink-0">
+        @include('include.sidebar')
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 py-6 sm:px-6 lg:px-8">
+
+        <!-- Page Title -->
+        <div class="mb-6">
+            <h4 class="text-xl font-bold text-gray-900 uppercase">
+                Dashboard
+            </h4>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+
+            <!-- Total Parties -->
+            <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-50 text-indigo-600 ring-1 ring-indigo-200">
+                        👥
                     </div>
-                    <div class="col-6">
-                        <div class="text-right">
-                            <h3 class="mt-1">
-                                <span data-plugin="counterup">{{ $parties }}</span>
-                            </h3>
-                            <p class="text-muted mb-1 text-truncate">
-                                Total Parties
-                            </p>
-                        </div>
+                    <div class="text-right">
+                        <h3 class="text-2xl font-bold text-gray-900">{{ $parties }}</h3>
+                        <p class="text-sm text-gray-500">Total Parties</p>
                     </div>
                 </div>
-                <!-- end row-->
             </div>
-            <!-- end widget-rounded-circle-->
-        </div>
-        <!-- end col-->
 
-        <div class="col-md-6 col-xl-3">
-            <div class="widget-rounded-circle card-box">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="avatar-lg rounded-circle bg-soft-success border-success border">
-                            <i class="fe-shopping-cart font-22 avatar-title text-success"></i>
-                        </div>
+            <!-- Vendor Invoices -->
+            <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-green-50 text-green-600 ring-1 ring-green-200">
+                        📄
                     </div>
-                    <div class="col-6">
-                        <div class="text-right">
-                            <h3 class="text-dark mt-1">
-                                <span data-plugin="counterup">{{ $invoices }}</span>
-                            </h3>
-                            <p class="text-muted mb-1 text-truncate">
-                                V Invoices
-                            </p>
-                        </div>
+                    <div class="text-right">
+                        <h3 class="text-2xl font-bold text-gray-900">{{ $invoices }}</h3>
+                        <p class="text-sm text-gray-500">Vendor Invoices</p>
                     </div>
                 </div>
-                <!-- end row-->
             </div>
-            <!-- end widget-rounded-circle-->
-        </div>
-        <!-- end col-->
 
-        <div class="col-md-6 col-xl-3">
-            <div class="widget-rounded-circle card-box">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                            <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
-                        </div>
+            <!-- GST Bills -->
+            <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-sky-50 text-sky-600 ring-1 ring-sky-200">
+                        🧾
                     </div>
-                    <div class="col-6">
-                        <div class="text-right">
-                            <h3 class="text-dark mt-1">
-                                <span data-plugin="counterup">{{ $bills }}</span>
-                            </h3>
-                            <p class="text-muted mb-1 text-truncate">GST Bills</p>
-                        </div>
+                    <div class="text-right">
+                        <h3 class="text-2xl font-bold text-gray-900">{{ $bills }}</h3>
+                        <p class="text-sm text-gray-500">GST Bills</p>
                     </div>
                 </div>
-                <!-- end row-->
             </div>
-            <!-- end widget-rounded-circle-->
-        </div>
-        <!-- end col-->
 
-        <div class="col-md-6 col-xl-3">
-            <div class="widget-rounded-circle card-box">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
-                            <i class="fe-eye font-22 avatar-title text-warning"></i>
-                        </div>
+            <!-- Payments -->
+            <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-50 text-yellow-600 ring-1 ring-yellow-200">
+                        💰
                     </div>
-                    <div class="col-6">
-                        <div class="text-right">
-                            <h3 class="text-dark mt-1">
-                                <span data-plugin="counterup">{{ number_format($payments) }}</span>
-                            </h3>
-                            <p class="text-muted mb-1 text-truncate">
-                                Payments
-                            </p>
-                        </div>
+                    <div class="text-right">
+                        <h3 class="text-2xl font-bold text-gray-900">{{ number_format($payments) }}</h3>
+                        <p class="text-sm text-gray-500">Payments</p>
                     </div>
                 </div>
-                <!-- end row-->
             </div>
-            <!-- end widget-rounded-circle-->
+
         </div>
-        <!-- end col-->
-    </div>
+    </main>
 </div>
+
 @endsection

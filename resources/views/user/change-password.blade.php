@@ -1,64 +1,81 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
 
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <h4 class="page-title font-weight-bold"> Change Password </h4>
-            </div>
+<div class="flex min-h-screen bg-gray-50">
+
+    <!-- Sidebar -->
+    <aside class="w-64 shrink-0">
+        @include('include.sidebar')
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 py-6 sm:px-6 lg:px-8">
+
+        <!-- Page Title -->
+        <div class="mb-6">
+            <h4 class="text-xl font-bold text-gray-900">
+                Change Password
+            </h4>
         </div>
-    </div>
-    <!-- end page title -->
 
-    <div class="row">
-        <!--Include alert file-->
+        <!-- Alerts -->
         @include('include.alert')
 
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="header-title text-uppercase">Fill the form</h4>
-                    <hr>
-                    <form action="{{ route('change-password-submit') }}" method="post">
-                        @csrf
-                        <div class="form-group mb-3">
-                            <label>Current Password</label>
-                            <div class="input-group input-group-merge">
-                                <input type="password" id="password" class="form-control" name="current_pass" required="">
-                                <div class="input-group-append" data-password="false">
-                                    <div class="input-group-text">
-                                        <span class="password-eye"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Card -->
+        <div class="max-w-xl rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
 
-                        <div class="form-group mb-3">
-                            <label>New Password</label>
-                            <div class="input-group input-group-merge">
-                                <input type="password" id="password-new" class="form-control" name="new_pass" required="">
-                                <div class="input-group-append" data-password="false">
-                                    <div class="input-group-text">
-                                        <span class="password-eye"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <h4 class="mb-4 text-sm font-bold uppercase text-gray-700">
+                Fill the form
+            </h4>
 
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary float-right mb-2">SUBMIT</button>
-                            </div>
-                        </div>
-                    </form>
+            <form action="{{ route('change-password-submit') }}" method="post" class="space-y-4">
+                @csrf
+
+                <!-- Current Password -->
+                <div>
+                    <label class="mb-1 block text-sm font-medium text-gray-700">
+                        Current Password
+                    </label>
+                    <input
+                        type="password"
+                        name="current_pass"
+                        required
+                        class="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+                               text-gray-900 shadow-sm placeholder-gray-400
+                               focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                    />
                 </div>
-            </div>
+
+                <!-- New Password -->
+                <div>
+                    <label class="mb-1 block text-sm font-medium text-gray-700">
+                        New Password
+                    </label>
+                    <input
+                        type="password"
+                        name="new_pass"
+                        required
+                        class="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+                               text-gray-900 shadow-sm placeholder-gray-400
+                               focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                    />
+                </div>
+
+                <!-- Submit -->
+                <div class="pt-4 text-right">
+                    <button
+                        type="submit"
+                        class="inline-flex items-center rounded-md bg-indigo-600 px-5 py-2
+                               text-sm font-semibold text-white shadow-sm
+                               hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
-    </div>
 
-
+    </main>
 </div>
+
 @endsection

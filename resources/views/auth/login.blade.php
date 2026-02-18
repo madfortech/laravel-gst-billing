@@ -1,99 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8" />
-    <title>Log In | UBold - Responsive Admin Dashboard Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- App css -->
-    <link href="{{ asset('public/assets/css2/bootstrap-creative.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-    <link href="{{ asset('public/assets/css2/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+@section('title', 'Log In')
 
-    <link href="{{ asset('public/assets/css2/bootstrap-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
-    <link href="{{ asset('public/assets/css2/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" disabled />
+@section('content')
 
-    <!-- icons -->
-    <link href="{{ asset('public/assets/css2/icons.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" href="{{ asset('public/assets/style.css') }}">
-</head>
-
-<body class="authentication-bg">
-
-    <div class="account-pages mt-5 mb-2">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6 col-xl-5">
-                    <div class="card bg-pattern">
-
-                        <div class="card-body p-4">
-
-                            <div class="text-center w-75 m-auto">
-                                <div class="auth-logo">
-                                    <h3>GST Billing Software</h3>
-                                </div>
-                                <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
-                            </div>
-
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
-
-                                <div class="form-group mb-3">
-                                    <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" name="email" value="{{ old('email') }}" required placeholder="Enter your email">
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="password">Password</label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="password" id="password" name="password" required class="form-control" placeholder="Enter your password">
-                                        <div class="input-group-append" data-password="false">
-                                            <div class="input-group-text">
-                                                <span class="password-eye"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group mb-0 text-center">
-                                    <button class="btn btn-primary btn-block font-weight-bold" type="submit">Log In </button>
-                                </div>
-
-                            </form>
-
-
-                        </div> <!-- end card-body -->
-                    </div>
-                    <!-- end card -->
-
-                </div> <!-- end col -->
-            </div>
-            <!-- end row -->
+<div class="mx-auto w-full max-w-4xl">
+    <div class="p-6">
+        <div class="mb-6 text-center">
+            <h1 class="text-2xl font-bold text-gray-900">
+                GST Billing Software
+            </h1>
+            <p class="mt-2 text-sm text-gray-600">
+                Enter your email address and password to access admin panel.
+            </p>
         </div>
-        <!-- end container -->
+
+        <form method="POST" action="{{ route('login') }}"
+              class="rounded-lg bg-white px-8 pt-6 pb-8 shadow-md">
+            @csrf
+
+            <!-- Email -->
+            <div class="mb-4">
+                <label for="emailaddress"
+                       class="mb-2 block text-sm font-semibold text-gray-700">
+                    Email address
+                </label>
+
+                <input
+                    type="email"
+                    id="emailaddress"
+                    name="email"
+                    value="{{ old('email') }}"
+                    required
+                    autocomplete="email"
+                    placeholder="Enter your email"
+                    class="block w-full rounded-md border px-3 py-2 text-sm text-gray-900 shadow-sm
+                        placeholder-gray-500 focus:outline-none focus:ring-2
+                        @error('email')
+                            border-red-500 focus:ring-red-200
+                        @else
+                            border-gray-300 focus:border-indigo-500 focus:ring-indigo-200
+                        @enderror
+                    "
+                />
+
+                @error('email')
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Password -->
+            <div class="mb-6">
+                <label for="password"
+                       class="mb-2 block text-sm font-semibold text-gray-700">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    autocomplete="current-password"
+                    placeholder="Enter your password"
+                    class="block w-full rounded-md border px-3 py-2 text-sm text-gray-900 shadow-sm
+                        placeholder-gray-500 focus:outline-none focus:ring-2
+                        @error('password')
+                            border-red-500 focus:ring-red-200
+                        @else
+                            border-gray-300 focus:border-indigo-500 focus:ring-indigo-200
+                        @enderror
+                    "
+                />
+
+                @error('password')
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Button -->
+            <div class="mb-4">
+                <button
+                    type="submit"
+                    class="w-full rounded-md bg-pink-500 px-4 py-2 text-sm font-semibold text-white
+                           shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-200">
+                    Log In
+                </button>
+            </div>
+        </form>
     </div>
-    <!-- end page -->
+</div>
 
-    <!-- Vendor js -->
-    <script src="{{ asset('public/assets/js2/vendor.min.js') }}"></script>
-
-    <!-- App js-->
-    <script src="{{ asset('public/assets/js2/app.min.js') }}"></script>
-</body>
-
-</html>
+@endsection

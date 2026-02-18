@@ -29,6 +29,7 @@ class VendorInvoice extends Controller
      */
     public function create($party_id)
     {
+        
         # Get the party details
         $party_id = base64_decode($party_id);
         $data['party'] = DB::table('parties')
